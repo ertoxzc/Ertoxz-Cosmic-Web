@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Ertoxz Cosmic</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Overlay & Sidebar -->
+  <div class="overlay" id="overlay"></div>
+  <div class="sidebar" id="sidebar">
+    <button class="close-btn" id="closeBtn">✕</button>
+    <h2>Menu Cosmic</h2>
+    <ul>
+      <li onclick="window.location.href='dashboard.html'">Dashboard</li>
+      <li onclick="window.location.href='redeem.html'">Redeem Key</li>
+      <li onclick="window.location.href='download.html'">Download Loader</li>
+      <li onclick="window.location.href='tutorial.html'">Tutorial</li>
+      <li style="color: #ff5252;" onclick="logoutApp()">Logout</li>
+    </ul>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-content">
+      <button class="sidebar-btn" id="openBtn">❯</button>
+      <h1 class="logo-title">Ertoxz Cosmic</h1>
+      <div class="action-buttons">
+        <div class="profil">
+          <!-- Avatar User (Bisa diganti nanti) -->
+          <img class="profil-img" src="https://ui-avatars.com/api/?name=Kaizen&background=235a78&color=5dade2" alt="Profil">
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Konten Utama -->
+  <div class="content-wrapper">
+    <div class="content">
+      
+      <!-- Informasi User -->
+      <div class="welcome-box">
+        <div class="user-greeting">
+          <span class="status-dot"></span>
+          <h4>Welcome Back, <span class="user-name">Memuat...</span></h4>
+        </div>
+        <div class="user-meta">
+          <div class="meta-row">
+            <span class="meta-label">STATUS</span>
+            <span class="badge badge-free" id="userTierBadge">MEMUAT...</span>
+          </div>
+          <div class="meta-row">
+            <span class="meta-label">HWID</span>
+            <span class="hwid-text">Android-89a2...</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- BOX BESAR: MY LICENSES -->
+      <div class="main-license-box">
+        
+        <!-- Judul di dalam box besar -->
+        <div class="main-license-title">
+          <h2>MY LICENSES</h2>
+        </div>
+
+        <!-- Daftar SC di dalam box besar (Akan diisi otomatis oleh JavaScript) -->
+        <div class="license-container" id="licenseContainer">
+          <p style="color: #a9c2d4; text-align: center; padding: 20px;">Memuat data script...</p>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Load Supabase dari CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <!-- Load Script Utama Kamu -->
+  <script src="script.js"></script>
+</body>
+</html>
