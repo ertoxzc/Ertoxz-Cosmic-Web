@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Ertoxz Cosmic</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Overlay & Sidebar -->
+  <div class="overlay" id="overlay"></div>
+  <div class="sidebar" id="sidebar">
+    <button class="close-btn" id="closeBtn">✕</button>
+    <h2>Menu Cosmic</h2>
+    <ul>
+      <li onclick="window.location.href='dashboard.html'">Dashboard</li>
+      <li onclick="window.location.href='admin.html'" style="color: #5dade2;">Admin Panel</li>
+      <li onclick="window.location.href='redeem.html'">Redeem Key</li>
+      <li onclick="window.location.href='download.html'">Download Loader</li>
+      <li onclick="window.location.href='tutorial.html'">Tutorial</li>
+      <li style="color: #ff5252;" onclick="logoutApp()">Logout</li>
+    </ul>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-content">
+      <button class="sidebar-btn" id="openBtn">❯</button>
+      <h1 class="logo-title">Admin Panel</h1>
+      <div class="action-buttons">
+        <div class="profil">
+          <img class="profil-img" src="https://ui-avatars.com/api/?name=Admin&background=235a78&color=5dade2" alt="Profil">
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Konten Utama Admin -->
+  <div class="content-wrapper">
+    <div class="content">
+      
+      <!-- Header Admin -->
+      <div class="welcome-box">
+        <div class="user-greeting">
+          <span class="status-dot"></span>
+          <h4>Developer Control Center</h4>
+        </div>
+        <p style="font-size: 0.9em; color: #a9c2d4; margin-top: 5px;">Pantau statistik pengguna dan sistem secara real-time.</p>
+      </div>
+
+      <!-- Kotak Statistik (Total User & Lisensi) -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px;">
+        <div class="welcome-box" style="margin-bottom: 0; text-align: center;">
+          <span class="meta-label">TOTAL USERS</span>
+          <h3 id="statTotalUsers" style="color: #5dade2; font-size: 1.5em; margin-top: 5px;">Memuat...</h3>
+        </div>
+        <div class="welcome-box" style="margin-bottom: 0; text-align: center;">
+          <span class="meta-label">ACTIVE LICENSES</span>
+          <h3 id="statTotalLicenses" style="color: #2ecc71; font-size: 1.5em; margin-top: 5px;">Memuat...</h3>
+        </div>
+      </div>
+
+      <!-- BOX BESAR: DAFTAR USER -->
+      <div class="main-license-box">
+        <div class="main-license-title">
+          <h2>MANAJEMEN PENGGUNA</h2>
+        </div>
+        <div class="license-container" id="adminUserContainer">
+          <p style="color: #a9c2d4; text-align: center; padding: 20px;">Memuat data pengguna...</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Load Supabase dari CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <!-- Load Script Utama -->
+  <script src="script.js"></script>
+</body>
+</html>
