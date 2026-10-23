@@ -1,8 +1,8 @@
 // ==========================================
 // 1. INISIALISASI SUPABASE CLIENT (OTOMATIS)
 // ==========================================
-const SUPABASE_URL = 'https://jifzdxrqfqwselkeadtb.supabase.co';[span_0](start_span)[span_0](end_span)
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImppZnpkeHJxZnF3c2Vsa2VhZHRiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE4MzE5NjQsImV4cCI6MjEwNzQwNzk2NH0.aXRWnIutvWEodxYwqWQiMhCzdXhABtCoMR--GFE0rMI';[span_1](start_span)[span_1](end_span)
+const SUPABASE_URL = 'https://jifzdxrqfqwselkeadtb.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImppZnpkeHJxZnF3c2Vsa2VhZHRiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE4MzE5NjQsImV4cCI6MjEwNzQwNzk2NH0.aXRWnIutvWEodxYwqWQiMhCzdXhABtCoMR--GFE0rMI';
 
 let supabaseClient;
 try {
