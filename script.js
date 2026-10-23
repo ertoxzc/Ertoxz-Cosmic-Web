@@ -1,8 +1,8 @@
 // ==========================================
-// 1. INISIALISASI SUPABASE CLIENT
+// 1. INISIALISASI SUPABASE CLIENT (OTOMATIS)
 // ==========================================
-const SUPABASE_URL = 'https://jifzdxrqfqwselkeadtb.supabase.co'; // Ganti dengan URL Supabase Anda
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImppZnpkeHJxZnF3c2Vsa2VhZHRiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE4MzE5NjQsImV4cCI6MjEwNzQwNzk2NH0.aXRWnIutvWEodxYwqWQiMhCzdXhABtCoMR--GFE0rMI'; // Ganti dengan Anon Key Supabase Anda
+const SUPABASE_URL = 'https://jifzdxrqfqwselkeadtb.supabase.co';[span_0](start_span)[span_0](end_span)
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImppZnpkeHJxZnF3c2Vsa2VhZHRiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE4MzE5NjQsImV4cCI6MjEwNzQwNzk2NH0.aXRWnIutvWEodxYwqWQiMhCzdXhABtCoMR--GFE0rMI';[span_1](start_span)[span_1](end_span)
 
 let supabaseClient;
 try {
@@ -59,7 +59,7 @@ const passInput = document.getElementById('passInput');
 
 if (btnLogin) {
     btnLogin.addEventListener('click', async () => {
-        if (!supabaseClient) return showMessage('Error: Masukkan URL Supabase asli di script.js!', '#ff5252');
+        if (!supabaseClient) return showMessage('Error: Supabase gagal diinisialisasi!', '#ff5252');
         
         const email = emailInput?.value;
         const password = passInput?.value;
@@ -84,7 +84,7 @@ if (btnLogin) {
 
 if (btnRegister) {
     btnRegister.addEventListener('click', async () => {
-        if (!supabaseClient) return showMessage('Error: Masukkan URL Supabase asli di script.js!', '#ff5252');
+        if (!supabaseClient) return showMessage('Error: Supabase gagal diinisialisasi!', '#ff5252');
         
         const email = emailInput?.value;
         const password = passInput?.value;
@@ -121,6 +121,20 @@ async function checkAuthSession() {
         window.location.href = 'dashboard.html';
     }
 
+    // Proteksi Khusus Halaman Admin
+    if (session && currentPage === 'admin.html') {
+        const { data: profile } = await supabaseClient
+            .from('profiles')
+            .select('role')
+            .eq('id', session.user.id)
+            .single();
+
+        if (!profile || profile.role !== 'developer') {
+            alert('Akses Ditolak! Halaman ini khusus Developer.');
+            window.location.href = 'dashboard.html';
+        }
+    }
+
     return session;
 }
 
@@ -132,16 +146,11 @@ window.logoutApp = async function() {
 };
 
 // ==========================================
-// 5. RENDER DATA DASHBOARD (TANPA SLUG & STATUS TER-UPDATE)
+// 5. RENDER DATA DASHBOARD USER
 // ==========================================
 async function loadDashboardData(session) {
     const licenseContainer = document.getElementById('licenseContainer');
     if (!licenseContainer) return;
-
-    if (!supabaseClient) {
-        licenseContainer.innerHTML = '<p style="color: #ff5252; text-align: center;">Konfigurasi Supabase bermasalah.</p>';
-        return;
-    }
 
     const user = session.user;
     const userNameEl = document.querySelector('.user-name');
@@ -149,7 +158,6 @@ async function loadDashboardData(session) {
     const userTierBadge = document.getElementById('userTierBadge');
 
     try {
-        // Ambil data profile user (username & hwid)
         const { data: profileData } = await supabaseClient
             .from('profiles')
             .select('username, hwid')
@@ -163,7 +171,6 @@ async function loadDashboardData(session) {
             userNameEl.textContent = user.email.split('@')[0];
         }
 
-        // Ambil semua script yang enabled dari tabel 'scripts'
         const { data: allScripts, error: scriptErr } = await supabaseClient
             .from('scripts')
             .select('*')
@@ -171,7 +178,6 @@ async function loadDashboardData(session) {
 
         if (scriptErr) throw scriptErr;
 
-        // Ambil lisensi aktif milik user dari tabel 'licence_keys'
         const { data: userLicenses, error: licenseErr } = await supabaseClient
             .from('licence_keys')
             .select('script_id')
@@ -184,7 +190,6 @@ async function loadDashboardData(session) {
         const ownedScriptIds = userLicenses ? userLicenses.map(lic => lic.script_id) : [];
         let renderedCount = 0;
 
-        // Tentukan status badge user (VIP jika memiliki minimal 1 script VIP berlisensi)
         const hasVip = (allScripts || []).some(s => !s.is_free && ownedScriptIds.includes(s.id));
         if (userTierBadge) {
             userTierBadge.textContent = hasVip ? 'VIP' : 'FREE';
@@ -195,14 +200,12 @@ async function loadDashboardData(session) {
             const isFree = scriptData.is_free === true;
             const isOwned = ownedScriptIds.includes(scriptData.id);
 
-            // Render hanya jika script gratis atau user punya lisensinya
             if (isFree || isOwned) {
                 renderedCount++;
                 const badgeClass = isFree ? 'badge-free' : 'badge-vip';
                 const tierText = isFree ? 'FREE' : 'VIP';
                 const statusText = isOwned ? 'LICENSED' : 'ACTIVE';
                 
-                // Slug disembunyikan dari tampilan web
                 const scriptCard = `
                     <div class="license-card">
                         <div class="license-details">
@@ -228,9 +231,65 @@ async function loadDashboardData(session) {
     }
 }
 
+// ==========================================
+// 6. RENDER DATA ADMIN DASHBOARD
+// ==========================================
+async function loadAdminData() {
+    const adminUserContainer = document.getElementById('adminUserContainer');
+    if (!adminUserContainer) return;
+
+    try {
+        // Ambil total user dari tabel profiles
+        const { data: profiles, error: profErr } = await supabaseClient
+            .from('profiles')
+            .select('*');
+
+        // Ambil total active licenses dari tabel licence_keys
+        const { data: licenses, error: licErr } = await supabaseClient
+            .from('licence_keys')
+            .select('*')
+            .eq('revoked', false);
+
+        if (profErr || licErr) throw (profErr || licErr);
+
+        // Update Counter Statistik
+        document.getElementById('statTotalUsers').textContent = profiles.length;
+        document.getElementById('statTotalLicenses').textContent = licenses.length;
+
+        adminUserContainer.innerHTML = '';
+        
+        profiles.forEach(user => {
+            const userCard = `
+                <div class="license-card">
+                    <div class="license-details">
+                        <h3>${user.username || 'Tanpa Username'}</h3>
+                        <span class="sub-text">HWID: ${user.hwid || 'Belum Terikat'} | Role: <b>${user.role || 'user'}</b></span>
+                    </div>
+                    <div class="license-tags">
+                        <span class="badge badge-active">ID: ${user.id.substring(0, 8)}...</span>
+                    </div>
+                </div>
+            `;
+            adminUserContainer.innerHTML += userCard;
+        });
+
+    } catch (error) {
+        adminUserContainer.innerHTML = '<p style="color: #ff5252; text-align: center;">Gagal memuat data admin.</p>';
+        console.error("Admin Load Error:", error);
+    }
+}
+
+// ==========================================
+// INITIALIZER UTAMA
+// ==========================================
 document.addEventListener('DOMContentLoaded', async () => {
     const session = await checkAuthSession();
     if (session) {
-        loadDashboardData(session);
+        const currentPage = window.location.pathname.split('/').pop();
+        if (currentPage === 'admin.html') {
+            loadAdminData();
+        } else {
+            loadDashboardData(session);
+        }
     }
 });
