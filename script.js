@@ -1,8 +1,8 @@
 // ==========================================
 // 1. INISIALISASI SUPABASE CLIENT
 // ==========================================
-const SUPABASE_URL = 'https://jifzdxrqfqwselkeadtb.supabase.co'; // Ganti dengan URL Supabase Anda
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImppZnpkeHJxZnF3c2Vsa2VhZHRiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE4MzE5NjQsImV4cCI6MjEwNzQwNzk2NH0.aXRWnIutvWEodxYwqWQiMhCzdXhABtCoMR--GFE0rMI'; // Ganti dengan Anon Key Supabase Anda
+const SUPABASE_URL = 'URL_SUPABASE_KAMU'; // Ganti dengan URL Supabase Anda
+const SUPABASE_KEY = 'ANON_KEY_SUPABASE_KAMU'; // Ganti dengan Anon Key Supabase Anda
 
 let supabaseClient;
 try {
@@ -202,12 +202,12 @@ async function loadDashboardData(session) {
                 const tierText = isFree ? 'FREE' : 'VIP';
                 const statusText = isOwned ? 'LICENSED' : 'ACTIVE';
                 
-                // Slug dihapus dari tampilan web sesuai permintaan
+                // Slug disembunyikan dari tampilan web
                 const scriptCard = `
                     <div class="license-card">
                         <div class="license-details">
                             <h3>${scriptData.name}</h3>
-                            <span class="sub-text">Entry: ${scriptData.rml_entry || '-'} | v${scriptData.version || '1.0'}</span>
+                            <span class="sub-text">${scriptData.description || 'Script Cosmic Engine'} | v${scriptData.version || '1.0'}</span>
                         </div>
                         <div class="license-tags">
                             <span class="badge ${badgeClass}">${tierText}</span>

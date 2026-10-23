@@ -12,15 +12,13 @@
   <div class="sidebar" id="sidebar">
     <button class="close-btn" id="closeBtn">X</button>
     <h2>Menu Cosmic</h2>
-        <ul>
-      <!-- Ubah link ini menjadi dashboard.html -->
+    <ul>
       <li onclick="window.location.href='dashboard.html'">Dashboard</li>
       <li onclick="window.location.href='redeem.html'">Redeem Key</li>
       <li onclick="window.location.href='download.html'">Download Loader</li>
       <li onclick="window.location.href='tutorial.html'">Tutorial</li>
       <li style="color: #ff5252;" onclick="logoutApp()">Logout</li>
     </ul>
-
   </div>
 
   <nav class="navbar">
@@ -45,7 +43,8 @@
       <div style="margin-top: 15px; border: 3px solid #5dade2; padding: 15px; border-radius: 10px; text-align: center; background-color: #0f1e2e;">
         <h3 style="margin-bottom: 5px;">ertoxz_loader.lua</h3>
         <p style="font-size: 0.8em; margin-bottom: 15px; color: #a9c2d4;">Versi 1.0 (Cosmic Engine) | Ukuran: 15 KB</p>
-        <button class="form-btn">DOWNLOAD SCRIPT</button>
+        <!-- Tombol download langsung mengarah ke file lokal ertoxz_loader.lua -->
+        <a href="ertoxz_loader.lua" download class="form-btn" style="display: block; text-align: center; text-decoration: none; line-height: normal;">DOWNLOAD SCRIPT</a>
       </div>
     </div>
   </div>
@@ -53,7 +52,7 @@
   <!-- Load Supabase dari CDN -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   
-  <!-- Load Script Gabungan Kamu -->
+  <!-- Load Script Utama -->
   <script src="script.js"></script>
 </body>
 </html>
