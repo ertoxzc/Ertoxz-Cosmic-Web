@@ -82,6 +82,7 @@ if (btnLogin) {
     });
 }
 
+// Fungsi Register
 if (btnRegister) {
     btnRegister.addEventListener('click', async () => {
         if (!supabaseClient) return showMessage('Error: Supabase gagal diinisialisasi!', '#ff5252');
@@ -99,7 +100,8 @@ if (btnRegister) {
             const { data, error } = await supabaseClient.auth.signUp({ email, password });
             if (error) throw error;
             
-            showMessage('Pendaftaran berhasil! Silakan klik Login.', '#2ecc71');
+            // PESAN DIUBAH AGAR USER MENGECEK EMAIL
+            showMessage('Sukses! Silakan cek kotak masuk/spam Email Anda untuk verifikasi sebelum login.', '#2ecc71');
         } catch (error) {
             showMessage('Gagal Daftar: ' + error.message, '#ff5252');
         }
