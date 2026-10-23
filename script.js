@@ -1,8 +1,8 @@
 // ==========================================
 // 1. INISIALISASI SUPABASE CLIENT
 // ==========================================
-const SUPABASE_URL = 'URL_SUPABASE_KAMU'; // Ganti dengan URL Supabase Anda
-const SUPABASE_KEY = 'ANON_KEY_SUPABASE_KAMU'; // Ganti dengan Anon Key Supabase Anda
+const SUPABASE_URL = 'https://jifzdxrqfqwselkeadtb.supabase.co'; // Ganti dengan URL Supabase Anda
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImppZnpkeHJxZnF3c2Vsa2VhZHRiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE4MzE5NjQsImV4cCI6MjEwNzQwNzk2NH0.aXRWnIutvWEodxYwqWQiMhCzdXhABtCoMR--GFE0rMI'; // Ganti dengan Anon Key Supabase Anda
 
 let supabaseClient;
 try {
