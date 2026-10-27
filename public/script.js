@@ -1,5 +1,5 @@
 // ==========================================
-// 0. BLOKIR KLIK KANAN & SHORTCUT
+// 0. BLOKIR KLIK KANAN DAN SHORTCUT
 // ==========================================
 document.addEventListener('contextmenu', e => e.preventDefault());
 document.addEventListener('keydown', e => {
@@ -144,7 +144,7 @@ if (btnLogin) {
       if (!response.ok) throw new Error(data.error || 'Login gagal');
 
       showMessage('Login berhasil! Mengalihkan...', '#2ecc71');
-      setTimeout(() => { window.location.href = 'dashboard.html'; }, 800);
+      setTimeout(() => { window.location.href = '/dashboard.html'; }, 800);
     } catch (err) {
       console.error('Login gagal:', err);
       showMessage('Gagal Login: ' + err.message);
@@ -192,11 +192,11 @@ if (btnRegister) {
 }
 
 // ==========================================
-// 6. SESSION CHECK
+// 6. SESSION CHECK (FIX ROUTING VERCEL)
 // ==========================================
 async function checkAuthSession() {
-  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-  const isIndexPage = currentPage === 'index.html' || currentPage === '';
+  const path = window.location.pathname;
+  const isIndexPage = path === '/' || path.includes('index.html');
 
   const { response } = await apiFetch('/api/auth/session');
   const session = response.ok ? true : null;
@@ -228,8 +228,8 @@ async function loadDashboardData() {
   const licenseContainer = document.getElementById('licenseContainer');
   if (!licenseContainer) return;
 
-  licenseContainer.innerHTML = `<p style="color:#ff5252;text-align:center;padding:20px;">Error: ${err.message}</p>`;
-  
+  licenseContainer.innerHTML = '<p style="color:#5dade2;text-align:center;padding:20px;">Memuat data script...</p>';
+
   try {
     const { response, data } = await apiFetch('/api/dashboard');
     if (!response.ok) throw new Error(data.error || 'Gagal memuat dashboard');
@@ -241,7 +241,7 @@ async function loadDashboardData() {
     const userTierBadge = document.getElementById('userTierBadge');
 
     if (userNameEl) userNameEl.textContent = profile.username;
-    if (hwidEl) hwidEl.textContent = profile.hwid;
+    if (hwidEl) hwidEl.textContent = profile.hwid || 'Belum Terikat';
     if (userTierBadge) {
       userTierBadge.textContent = profile.role.toUpperCase();
       let badgeClass = 'badge-free';
@@ -278,7 +278,7 @@ async function loadDashboardData() {
     });
   } catch (err) {
     console.error('Gagal memuat dashboard:', err);
-    licenseContainer.innerHTML = '<p style="color:#ff5252;text-align:center;padding:20px;">Gagal memuat daftar script.</p>';
+    licenseContainer.innerHTML = `<p style="color:#ff5252;text-align:center;padding:20px;">Error: ${err.message}</p>`;
   }
 }
 
@@ -338,13 +338,13 @@ async function loadAdminData() {
 }
 
 // ==========================================
-// 10. INIT
+// 10. INIT (FIX ROUTING VERCEL)
 // ==========================================
 document.addEventListener('DOMContentLoaded', async () => {
   const session = await checkAuthSession();
   if (!session) return;
 
-  const currentPage = window.location.pathname.split('/').pop();
-  if (currentPage === 'admin.html') await loadAdminData();
-  else if (currentPage === 'dashboard.html') await loadDashboardData();
+  const path = window.location.pathname;
+  if (path.includes('admin')) await loadAdminData();
+  else if (path.includes('dashboard')) await loadDashboardData();
 });
