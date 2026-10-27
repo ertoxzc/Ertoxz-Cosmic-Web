@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tutorial - Ertoxz Cosmic</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="overlay" id="overlay"></div>
+  <div class="sidebar" id="sidebar">
+    <button class="close-btn" id="closeBtn">X</button>
+    <h2>Menu Cosmic</h2>
+        <ul>
+      <!-- Ubah link ini menjadi dashboard.html -->
+      <li onclick="window.location.href='dashboard.html'">Dashboard</li>
+      <li onclick="window.location.href='redeem.html'">Redeem Key</li>
+      <li onclick="window.location.href='download.html'">Download Loader</li>
+      <li onclick="window.location.href='tutorial.html'">Tutorial</li>
+      <li style="color: #ff5252;" onclick="logoutApp()">Logout</li>
+    </ul>
+
+  </div>
+
+  <nav class="navbar">
+    <div class="navbar-content">
+      <button class="sidebar-btn" id="openBtn">></button>
+      <h1>Ertoxz Cosmic</h1>
+      <div class="action-buttons">
+        <div class="profil">
+          <img class="profil-img" src="#" alt="Profil">
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="content-wrapper">
+    <div class="content">
+      <div class="welcome" style="margin-bottom: 15px;">
+        <h4>📖 Cara Pemasangan</h4>
+      </div>
+      
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <div class="tutorial-box">
+          <h4 style="color: #5dade2; margin-bottom: 5px;">Langkah 1:</h4>
+          <p style="font-size: 0.9em;">Download file <code>ertoxz_loader.lua</code> dari menu 'Download Loader'.</p>
+        </div>
+        
+        <div class="tutorial-box">
+          <h4 style="color: #5dade2; margin-bottom: 5px;">Langkah 2:</h4>
+          <p style="font-size: 0.9em;">Pindahkan file tersebut ke folder Growtopia di HP kamu: <br><code style="color: yellow;">Android/media/com.rtsoft.growtopia/scripts/</code></p>
+        </div>
+        
+        <div class="tutorial-box">
+          <h4 style="color: #5dade2; margin-bottom: 5px;">Langkah 3:</h4>
+          <p style="font-size: 0.9em;">Buka game, eksekusi script-nya, lalu login menggunakan Email dan Password akun website ini.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Load Script Gabungan Kamu -->
+  <script src="script.js"></script>
+</body>
+</html>

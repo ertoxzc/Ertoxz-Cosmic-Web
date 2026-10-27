@@ -1,0 +1,13 @@
+{
+  "name": "ertoxz-cosmic",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vercel dev"
+  },
+  "dependencies": {
+    "@supabase/ssr": "^0.5.2",
+    "@supabase/supabase-js": "^2.45.0",
+    "cookie": "^0.6.0"
+  }
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redeem Key - Ertoxz Cosmic</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="overlay" id="overlay"></div>
+  <div class="sidebar" id="sidebar">
+    <button class="close-btn" id="closeBtn">X</button>
+    <h2>Menu Cosmic</h2>
+        <ul>
+      <!-- Ubah link ini menjadi dashboard.html -->
+      <li onclick="window.location.href='dashboard.html'">Dashboard</li>
+      <li onclick="window.location.href='redeem.html'">Redeem Key</li>
+      <li onclick="window.location.href='download.html'">Download Loader</li>
+      <li onclick="window.location.href='tutorial.html'">Tutorial</li>
+      <li style="color: #ff5252;" onclick="logoutApp()">Logout</li>
+    </ul>
+
+  </div>
+
+  <nav class="navbar">
+    <div class="navbar-content">
+      <button class="sidebar-btn" id="openBtn">></button>
+      <h1>Ertoxz Cosmic</h1>
+      <div class="action-buttons">
+        <div class="profil">
+          <img class="profil-img" src="#" alt="Profil">
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="content-wrapper">
+    <div class="content">
+      <div class="welcome">
+        <h4>🔑 Redeem License Key</h4>
+        <p style="font-size: 0.9em; margin-top: 5px;">Masukkan kode voucher untuk mengaktifkan script VIP.</p>
+      </div>
+      
+      <div style="margin-top: 15px; display: flex; flex-direction: column; gap: 10px;">
+        <input type="text" class="form-input" placeholder="Contoh: ERTOXZ-XXXX-XXXX">
+        <button class="form-btn">REDEEM SEKARANG</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Load Script Gabungan Kamu -->
+  <script src="script.js"></script>
+</body>
+</html>

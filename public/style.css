@@ -1,0 +1,363 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: white;
+}
+
+body {
+  background-color: #0f1e2e;
+}
+
+/* ========================================= */
+/* NAVBAR                                    */
+/* ========================================= */
+.navbar {
+  width: 100%;
+  padding: 10px;
+}
+
+.navbar-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 4px solid #5dade2;
+  border-radius: 10px;
+  background-color: #235a78;
+  padding: 8px 12px;
+  height: 70px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.logo-title {
+  color: #ffffff;
+  font-size: 1.3em;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 8px rgba(93, 173, 226, 0.5);
+}
+
+.sidebar-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid #5dade2;
+  border-radius: 6px;
+  background-color: rgba(15, 30, 46, 0.5);
+  color: #5dade2;
+  font-size: 16px;
+  font-weight: bold;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sidebar-btn:active {
+  background-color: #5dade2;
+  color: #0f1e2e;
+}
+
+.action-buttons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.profil {
+  border: 3px solid #5dade2;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 8px rgba(93, 173, 226, 0.4);
+}
+
+.profil-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ========================================= */
+/* KONTEN UTAMA                              */
+/* ========================================= */
+.content-wrapper {
+  width: 100%;
+  padding: 10px;
+}
+
+.content {
+  justify-content: center;
+  align-items: center;
+  border: 4px solid #5dade2;
+  border-radius: 10px;
+  background-color: #235a80;
+  padding: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* ========================================= */
+/* USER WELCOME CARD                         */
+/* ========================================= */
+.welcome-box {
+  background-color: #0f1e2e;
+  border: 3px solid #5dade2;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 15px;
+}
+
+.user-greeting {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  background-color: #2ecc71;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #2ecc71;
+}
+
+.user-greeting h4 {
+  font-size: 1.1em;
+  font-weight: 600;
+}
+
+.user-name {
+  color: #5dade2;
+  font-weight: bold;
+}
+
+.user-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.9em;
+  padding-top: 8px;
+  border-top: 1px solid rgba(93, 173, 226, 0.2);
+}
+
+.meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.meta-label {
+  color: #a9c2d4;
+  font-size: 0.85em;
+  font-weight: bold;
+}
+
+.hwid-text {
+  font-family: monospace;
+  color: #5dade2;
+  font-size: 0.9em;
+  background-color: rgba(35, 90, 128, 0.4);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+/* ========================================= */
+/* BOX BESAR MY LICENSES & KOTAK SC          */
+/* ========================================= */
+.main-license-box {
+  border: 4px solid #5dade2;
+  border-radius: 10px;
+  background-color: #0f1e2e;
+  padding: 15px;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+.main-license-title {
+  text-align: center;
+  padding-bottom: 12px;
+  margin-bottom: 15px;
+  /* Garis putus-putus tebal sebagai pemisah judul dan isi SC */
+  border-bottom: 3px dashed #235a80; 
+}
+
+.main-license-title h2 {
+  font-size: 1.1em;
+  color: #5dade2;
+  letter-spacing: 1.5px;
+  font-weight: 800;
+}
+
+.license-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* Jarak antar kotak SC */
+}
+
+/* KOTAK KECIL UNTUK MASING-MASING SC */
+.license-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 3px solid #5dade2;
+  border-radius: 8px;
+  /* Warna background SC sedikit lebih terang agar menonjol di dalam box besar */
+  background-color: rgba(35, 90, 128, 0.3);
+  padding: 12px 15px;
+  transition: transform 0.15s ease;
+}
+
+.license-card:active {
+  transform: scale(0.98);
+}
+
+.license-details h3 {
+  font-size: 1.05em;
+  color: #ffffff;
+}
+
+.sub-text {
+  font-size: 0.8em;
+  color: #a9c2d4;
+  display: block;
+  margin-top: 4px;
+}
+
+.license-tags {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+/* ========================================= */
+/* BADGES / CHIPS STYLE                      */
+/* ========================================= */
+.badge {
+  font-size: 0.7em;
+  font-weight: 800;
+  padding: 4px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+}
+
+.badge-vip {
+  background-color: rgba(241, 196, 15, 0.15);
+  color: #f1c40f;
+  border: 1px solid #f1c40f;
+}
+
+.badge-free {
+  background-color: rgba(93, 173, 226, 0.15);
+  color: #5dade2;
+  border: 1px solid #5dade2;
+}
+
+.badge-licensed {
+  background-color: rgba(46, 204, 113, 0.15);
+  color: #2ecc71;
+  border: 1px solid #2ecc71;
+}
+
+.badge-active {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* ========================================= */
+/* SIDEBAR & OVERLAY                         */
+/* ========================================= */
+.overlay {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.75); z-index: 99;
+  opacity: 0; visibility: hidden; transition: 0.3s;
+  backdrop-filter: blur(2px);
+}
+.overlay.active { opacity: 1; visibility: visible; }
+
+.sidebar {
+  position: fixed; top: 0; left: -260px;
+  width: 250px; height: 100%; background-color: #0f1e2e;
+  border-right: 4px solid #5dade2; z-index: 100;
+  transition: 0.3s ease-in-out; padding: 20px;
+  box-shadow: 5px 0 20px rgba(0,0,0,0.6);
+}
+.sidebar.active { left: 0; }
+
+.sidebar h2 { 
+  margin-bottom: 20px; 
+  border-bottom: 2px solid #5dade2; 
+  padding-bottom: 10px; 
+  color: #5dade2;
+  font-size: 1.2em;
+}
+.sidebar ul { list-style: none; }
+.sidebar ul li { 
+  margin-bottom: 12px; 
+  font-size: 1em; 
+  font-weight: 600;
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer; 
+  transition: background-color 0.2s;
+}
+.sidebar ul li:hover { 
+  background-color: #235a80;
+  color: #5dade2; 
+}
+
+.close-btn {
+  background: transparent; border: none; font-size: 20px; font-weight: bold;
+  position: absolute; right: 15px; top: 15px; cursor: pointer; color: #5dade2;
+}
+
+/* ========================================= */
+/* FORM INPUT, BUTTON, & TUTORIAL BOX        */
+/* ========================================= */
+.form-input {
+  width: 100%;
+  padding: 12px;
+  background-color: #0f1e2e;
+  border: 3px solid #5dade2;
+  border-radius: 8px;
+  color: white;
+  font-size: 15px;
+  outline: none;
+}
+
+.form-input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.form-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #5dade2;
+  border: 3px solid #5dade2;
+  border-radius: 8px;
+  color: #0f1e2e;
+  font-weight: 800;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.2s;
+  letter-spacing: 0.5px;
+}
+
+.form-btn:active {
+  background-color: #235a80;
+  border-color: #5dade2;
+  color: white;
+}
+
+.tutorial-box {
+  border: 3px solid #5dade2;
+  border-radius: 8px;
+  padding: 12px;
+  background-color: #0f1e2e;
+}

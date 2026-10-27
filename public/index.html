@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Ertoxz Cosmic</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body style="display: flex; justify-content: center; align-items: center; min-height: 100vh;">
+
+  <div class="content-wrapper" style="max-width: 400px; width: 100%;">
+    <div class="content" style="padding: 20px;">
+      
+      <!-- Logo Title -->
+      <div style="text-align: center; margin-bottom: 20px;">
+        <h1 class="logo-title" style="font-size: 1.8em;">Ertoxz Cosmic</h1>
+        <p style="color: #a9c2d4; font-size: 0.9em; margin-top: 5px;">Panel Authentication</p>
+      </div>
+
+      <!-- Kotak Form Login -->
+      <div class="welcome-box" style="padding: 20px;">
+        
+        <h4 style="color: #5dade2; text-align: center; margin-bottom: 15px; font-size: 1.2em;">USER LOGIN</h4>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <!-- Input Email & Password -->
+          <input type="email" id="emailInput" class="form-input" placeholder="Masukkan Email">
+          <input type="password" id="passInput" class="form-input" placeholder="Masukkan Password">
+
+           <!-- Cloudflare Turnstile CAPTCHA -->
+<div id="turnstile-container" style="display:flex; justify-content:center; margin:10px 0;">
+    <div id="turnstile-widget"></div>
+</div>
+          
+          <!-- Pesan Notifikasi (Error/Sukses) -->
+          <p id="authMsg" style="text-align: center; font-size: 0.85em; font-weight: bold; margin-top: 5px;"></p>
+
+          <!-- Tombol Aksi -->
+          <button id="btnLogin" class="form-btn" style="margin-top: 5px;">LOGIN</button>
+          
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 5px;">
+            <hr style="flex: 1; border: 1px solid rgba(93, 173, 226, 0.2);">
+            <span style="color: #a9c2d4; font-size: 0.8em; padding: 0 10px;">atau</span>
+            <hr style="flex: 1; border: 1px solid rgba(93, 173, 226, 0.2);">
+          </div>
+          
+          <!-- Tombol Register (Gaya outline transparan) -->
+          <button id="btnRegister" class="form-btn" style="background-color: transparent; border: 3px solid #5dade2; color: #5dade2;">DAFTAR AKUN BARU</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Cloudflare Turnstile -->
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
+  
+  <!-- Script utama -->
+  <script src="script.js"></script>
+</body>
+</html>
