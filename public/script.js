@@ -228,8 +228,8 @@ async function loadDashboardData() {
   const licenseContainer = document.getElementById('licenseContainer');
   if (!licenseContainer) return;
 
-  licenseContainer.innerHTML = '<p style="color:#5dade2;text-align:center;padding:20px;">Memuat data script...</p>';
-
+  licenseContainer.innerHTML = `<p style="color:#ff5252;text-align:center;padding:20px;">Error: ${err.message}</p>`;
+  
   try {
     const { response, data } = await apiFetch('/api/dashboard');
     if (!response.ok) throw new Error(data.error || 'Gagal memuat dashboard');
